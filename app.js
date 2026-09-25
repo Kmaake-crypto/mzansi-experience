@@ -154,15 +154,21 @@ function renderItinerary() {
   const poolIds = [...favourites].filter(id => !itinerary.includes(id));
 
   pool.innerHTML = poolIds.length
-    ? poolIds.map(id => `<div class="itin-item cat-${(findById(id) || {}).category || ""}">${(findById(id) || {}).title || id}</div>`).join("")
+    ? poolIds.map(id => `<div class="itin-item cat-${(findById(id) || {}).category || ""}"><span>${(findById(id) || {}).title || id}</span><span aria-hidden="true">+</span></div>`).join("")
     : `<p class="itin-empty">Save an experience or event to see it here.</p>`;
 
   list.innerHTML = itinerary.length
-    ? itinerary.map(id => `<div class="itin-item cat-${(findById(id) || {}).category || ""}">${(findById(id) || {}).title || id}</div>`).join("")
+    ? itinerary.map(id => `<div class="itin-item cat-${(findById(id) || {}).category || ""}"><span>${(findById(id) || {}).title || id}</span><span aria-hidden="true">✕</span></div>`).join("")
     : `<p class="itin-empty">Drag favourites here to plan your day.</p>`;
 
-  pool.querySelectorAll(".itin-item").forEach((el, i) => makeDraggable(el, poolIds[i]));
-  list.querySelectorAll(".itin-item").forEach((el, i) => makeDraggable(el, itinerary[i]));
+  pool.querySelectorAll(".itin-item").forEach((el, i) => {
+    makeDraggable(el, poolIds[i]);
+    el.addEventListener("click", () => { itinerary.push(poolIds[i]); renderItinerary(); renderBadges(); });
+  });
+  list.querySelectorAll(".itin-item").forEach((el, i) => {
+    makeDraggable(el, itinerary[i]);
+    el.addEventListener("click", () => { itinerary.splice(i, 1); renderItinerary(); renderBadges(); });
+  });
   saveItinerary();
 }
 

@@ -43,9 +43,9 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--s
 h1, h2 { font-family: var(--serif); font-weight: 700; margin: 0; }
 a { color: inherit; }
 
-.topbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 6vw; border-bottom: 1px solid var(--line); }
+.topbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 20px; padding: 20px 6vw; border-bottom: 1px solid var(--line); }
 .wordmark { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; }
-.topnav { display: flex; align-items: center; gap: 28px; font-size: .95rem; }
+.topnav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; font-size: .95rem; }
 .topnav a { text-decoration: none; color: var(--ink-soft); }
 .topnav a:hover { color: var(--ink); }
 #theme-toggle { background: none; border: 1px solid var(--line); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 1rem; }
@@ -103,7 +103,7 @@ input[type="number"], input[type="search"] { background: var(--surface); border:
 .site-footer { padding: 6vh 6vw; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .85rem; }
 
 @media (max-width: 640px) {
-  .topnav { gap: 14px; font-size: .85rem; }
+  .topnav { gap: 8px 14px; font-size: .82rem; }
   section { padding: 7vh 6vw; }
 }
 
@@ -119,7 +119,8 @@ input[type="number"], input[type="search"] { background: var(--surface); border:
 .itinerary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .itinerary-subhead { font-size: .9rem; color: var(--ink-soft); font-weight: 600; margin: 0 0 10px; }
 .itinerary-pool, .itinerary-list { min-height: 120px; border: 1px dashed var(--line); border-radius: var(--radius); padding: 10px; display: flex; flex-direction: column; gap: 8px; }
-.itin-item { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent, var(--gold)); border-radius: var(--radius); padding: 10px 12px; cursor: grab; font-size: .9rem; display: flex; justify-content: space-between; gap: 8px; }
+.itin-item { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent, var(--gold)); border-radius: var(--radius); padding: 10px 12px; cursor: pointer; font-size: .9rem; display: flex; justify-content: space-between; gap: 8px; }
+.itin-item:hover { border-color: var(--gold); }
 .itin-item.dragging { opacity: .4; }
 .itin-empty { color: var(--ink-soft); font-size: .85rem; padding: 10px; }
 
