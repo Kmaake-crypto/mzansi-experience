@@ -14,6 +14,9 @@
   <span class="wordmark">Mzansi Experience</span>
   <nav class="topnav">
     <a href="#explore">Explore</a>
+    <a href="#map">Map</a>
+    <a href="#itinerary">Itinerary</a>
+    <a href="#events">Events</a>
     <a href="#planner">Budget</a>
     <a href="#dashboard">Profile</a>
     <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
@@ -35,6 +38,41 @@
   <div id="filter-bar" class="filter-bar"></div>
   <p id="result-count" class="result-count"></p>
   <div id="card-grid" class="card-grid"></div>
+</section>
+
+<section id="map" class="map-section">
+  <h2>Explore by region</h2>
+  <p class="section-sub">Click a city to jump to its experiences.</p>
+  <svg id="sa-map" viewBox="0 0 400 320" class="sa-map" role="img" aria-label="Map of South Africa">
+    <path d="M60,80 L160,50 L260,60 L340,110 L360,170 L320,230 L340,270 L260,300 L160,290 L90,260 L50,190 L40,130 Z" class="map-outline"/>
+    <circle class="map-dot" data-city="Johannesburg" cx="230" cy="140" r="9"></circle>
+    <circle class="map-dot" data-city="Gauteng" cx="210" cy="120" r="9"></circle>
+    <circle class="map-dot" data-city="Mpumalanga" cx="290" cy="130" r="9"></circle>
+    <circle class="map-dot" data-city="Durban" cx="300" cy="220" r="9"></circle>
+    <circle class="map-dot" data-city="Cape Town" cx="90" cy="255" r="9"></circle>
+  </svg>
+  <div id="map-legend" class="map-legend"></div>
+</section>
+
+<section id="itinerary" class="itinerary">
+  <h2>Build your day</h2>
+  <p class="section-sub">Drag a saved favourite into your itinerary, then drag to reorder.</p>
+  <div class="itinerary-grid">
+    <div>
+      <h3 class="itinerary-subhead">Your favourites</h3>
+      <div id="itinerary-pool" class="itinerary-pool"></div>
+    </div>
+    <div>
+      <h3 class="itinerary-subhead">Your day</h3>
+      <div id="itinerary-list" class="itinerary-list"></div>
+    </div>
+  </div>
+</section>
+
+<section id="events" class="events">
+  <h2>This weekend</h2>
+  <p class="section-sub">A handful of events happening around the country.</p>
+  <div id="events-grid" class="card-grid"></div>
 </section>
 
 <section id="planner" class="planner">
@@ -67,6 +105,14 @@
     <div class="stat"><span class="stat-num" data-target="850" id="stat-rand">0</span><span class="stat-label">Rand tracked</span></div>
     <div class="stat"><span class="stat-num" data-target="12" id="stat-total">0</span><span class="stat-label">Experiences</span></div>
   </div>
+  <div class="level-block">
+    <div class="level-head">
+      <span id="level-label">Level 1 Explorer</span>
+      <span id="level-xp">0 / 100 XP</span>
+    </div>
+    <div class="level-bar"><div id="level-fill" class="level-fill"></div></div>
+  </div>
+  <div id="badge-grid" class="badge-grid"></div>
 </section>
 
 <footer class="site-footer">
